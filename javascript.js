@@ -5,7 +5,7 @@ const gridContainer = document.querySelector('.grid-container');
 let square = [];
 let row = [];
 
-//Create grid of 16 by 16 by creating rows 16 rows and filling each row
+//Create grid of 16 by 16 by creating rows 16 rows and filling each row with 16 boxes
 for (i = 0; i < 16; i++) {
     row[i] = document.createElement('div');
     gridContainer.appendChild(row[i]);
@@ -23,7 +23,19 @@ for (i = 0; i < 16; i++) {
             square[j].setAttribute('class', 'grid-square-bottom-end');
         }
         row[i].appendChild(square[j]);
+        square[j].addEventListener('click', function draw() {bodyTest.setAttribute('style', 'background-color: black')})
         console.log("row" + j);
     }
     console.log("column" + i);
+}
+
+// Code to change colour of squared after hover
+bodyTest = document.querySelectorAll('.grid-square, .grid-square-bottom-end, .grid-square-right-end, .grid-square-bottom-right')
+console.log(bodyTest);
+bodyTest.forEach((e) => {
+    e.addEventListener('mouseover',function draw() {e.setAttribute('style', 'background-color: black')})
+})
+
+function leftMouseDown () {
+    
 }
