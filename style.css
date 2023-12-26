@@ -1,1 +1,14 @@
-/*stylesheet for etch a sketch
+/*stylesheet for etch a sketch*/
+
+.grid-square {
+    border-color: black;
+    border-style: solid;
+    background-color: white;
+    display: flex;
+    width: 20px;
+    height: 20px;
+}
+
+.grid-container {
+    display: flex;
+}
