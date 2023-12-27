@@ -7,8 +7,9 @@ canvasSize = document.querySelector('#canvas-size');
 canvasSize.addEventListener('click', () => {
     gridContainer.innerHTML = "";
     do {
-        gridLength = prompt ("Enter number of squares per side for new grid between 1 and 100: ")
+        gridLength = prompt ("Enter your brush size! Choose between 1 and 100: ")
      } while (gridLength < 1 || gridLength > 100)
+    gridLength = 100 - gridLength + 1;
     mainContainer.appendChild(gridContainer);
     gridSize(gridLength);
 })
@@ -22,17 +23,28 @@ let randomColor = function () {
   const rainbowMode = document.querySelector('#rainbow');
   let rainbowOnSwitch = "off";
   rainbowMode.addEventListener('click', () => {
-    gridContainer.innerHTML = "";
-    mainContainer.appendChild(gridContainer);
-    gridSize(gridLength);
     if (rainbowOnSwitch === "off") {
         rainbowOnSwitch = "on";
+        rainbowMode.setAttribute("ID", "rainbow-on");
         console.log("rainbow switch is " + rainbowOnSwitch);
     }
     else if (rainbowOnSwitch === "on") {
         rainbowOnSwitch = "off";
+        rainbowMode.setAttribute("ID", "rainbow");
         console.log("rainbow switch is " + rainbowOnSwitch);
     }
+    gridContainer.innerHTML = "";
+    gridSize(gridLength);
+    mainContainer.appendChild(gridContainer);
+  })
+
+  //Function to reset etch
+
+  const resetButton = document.querySelector("#reset");
+  resetButton.addEventListener("click", () => {
+    gridContainer.innerHTML = "";
+    gridSize(gridLength);
+    mainContainer.appendChild(gridContainer);
   })
   
 
