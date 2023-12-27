@@ -113,6 +113,8 @@ button {
     display: flex;
     flex-direction: column;
     background-color: #DA291C;
+    padding-top: 25px;
+    padding-bottom: 10px;
 
 }
 
