@@ -2,15 +2,15 @@
 
 let gridLength = 16;
 
+const buttonContainer = document.querySelector(".button-container");
 mainContainer = document.querySelector('.main-container');
 canvasSize = document.querySelector('#canvas-size');
 canvasSize.addEventListener('click', () => {
     gridContainer.innerHTML = "";
     do {
-        gridLength = prompt ("Enter your brush size! Choose between 1 and 100: ")
+        gridLength = prompt ("Select your grid size! Choose between 1 and 100: ")
      } while (gridLength < 1 || gridLength > 100)
-    gridLength = 100 - gridLength + 1;
-    mainContainer.appendChild(gridContainer);
+    buttonContainer.after(gridContainer);
     gridSize(gridLength);
 })
 
@@ -26,16 +26,14 @@ let randomColor = function () {
     if (rainbowOnSwitch === "off") {
         rainbowOnSwitch = "on";
         rainbowMode.setAttribute("ID", "rainbow-on");
-        console.log("rainbow switch is " + rainbowOnSwitch);
     }
     else if (rainbowOnSwitch === "on") {
         rainbowOnSwitch = "off";
         rainbowMode.setAttribute("ID", "rainbow");
-        console.log("rainbow switch is " + rainbowOnSwitch);
     }
     gridContainer.innerHTML = "";
     gridSize(gridLength);
-    mainContainer.appendChild(gridContainer);
+    buttonContainer.after(gridContainer);
   })
 
   //Function to reset etch
@@ -44,7 +42,7 @@ let randomColor = function () {
   resetButton.addEventListener("click", () => {
     gridContainer.innerHTML = "";
     gridSize(gridLength);
-    mainContainer.appendChild(gridContainer);
+    buttonContainer.after(gridContainer);
   })
   
 
@@ -72,14 +70,10 @@ let gridSize = function getGridSize(length) {
                 square[j].setAttribute('class', 'grid-square-bottom-end');
             }
             row[i].appendChild(square[j]);
-            square[j].addEventListener('click', function draw() {bodyTest.setAttribute('style', 'background-color: black')})
-            console.log("row" + j);
         }
-        console.log("column" + i);
     }
     // Code to change colour of squared after hover
-    const draw = document.querySelectorAll('.grid-square, .grid-square-bottom-end, .grid-square-right-end, .grid-square-bottom-right')
-    console.log(draw);
+    const draw = document.querySelectorAll('.grid-square, .grid-square-bottom-end, .grid-square-right-end, .grid-square-bottom-right');
     draw.forEach((e) => {
         if (rainbowOnSwitch === "off") {
             e.addEventListener('mouseover',function draw() {e.setAttribute('style', 'background-color: black')});
